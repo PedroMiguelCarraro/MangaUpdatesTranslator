@@ -9,8 +9,8 @@ int main(){
 	char l[500], t[] = "title";
 	int i,j,k,fg;
 	
-	f = fopen("mangalist.xml", "r");
-	o = fopen("namelist.txt", "w");
+	f = fopen("mangalist.xml", "r"); //Input
+	o = fopen("namelist.txt", "w");  //Output
 	
 	if(f == NULL){
 		printf("ERRO trying to open Input\n");
@@ -23,7 +23,7 @@ int main(){
 	}
 	
 	
-	while(fgets(l, 500, f )){
+	while(fgets(l, 500, f )){ 
 		for(i=0;i<strlen(l);i++){
 			if(l[i] == 't'){
 				fg=1;

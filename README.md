@@ -20,6 +20,14 @@ This program is written in c and the propose is to translate the .xml file expor
   - And that it
   - *Some names are not on the DB so an error message is going to appear, copy the names and look/add manually for those* 
  
+# Imagens
+  
+  ![Thumbnail Image](readmefiles/malexport.png)
+  ![Thumbnail Image](readmefiles/malselect.png)
+  ![Thumbnail Image](readmefiles/muadd.png)
+  ![Thumbnail Image](readmefiles/muadd2.png)
+  ![Thumbnail Image](readmefiles/muadd3.png)
+
 
 # OS
 
