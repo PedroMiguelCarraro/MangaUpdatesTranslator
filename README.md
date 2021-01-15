@@ -22,11 +22,11 @@ This program is written in c and the propose is to translate the .xml file expor
  
 # Imagens
   
-  ![Thumbnail Image](readmefiles/malexport.png)
-  ![Thumbnail Image](readmefiles/malselect.png)
-  ![Thumbnail Image](readmefiles/muadd.png)
-  ![Thumbnail Image](readmefiles/muadd2.png)
-  ![Thumbnail Image](readmefiles/muadd3.png)
+  <img src="readmefiles/malexport.png" width="250" height="500">
+  <img src="readmefiles/malselect.png" width="250" height="500">
+  <img src="readmefiles/muadd.png" width="250" height="500">
+  <img src="readmefiles/muadd2.png" width="250" height="500">
+  <img src="readmefiles/muadd3.png" width="250" height="500">
 
 
 # OS
