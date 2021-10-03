@@ -42,10 +42,15 @@ The complex creates a file for each status,
  
 -->
  
- <img src="readmefiles/malexport.png">
+<img src="assets/malexport.png" width="30%" height="30%">
  
- ![mal](.assets/malselect.png)
+<img src="assets/malselect.png" width="50%" height="50%">
 
+<img src="assets/muadd.png" width="70%" height="70%">
+
+<img src="assets/muadd2.png" width="70%" height="70%">
+
+<img src="assets/muadd3.png" width="70%" height="70%">
 
 # OS
 
