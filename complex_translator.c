@@ -12,8 +12,7 @@ int main(){
 	FILE *d = NULL; //Dropped
 	
 	char l[500], mgname[100];
-	char t[] = "title", s[] = "status";
-	int i,j,k,fg,pass,temp,ext;
+	int i, j, k=0, kk=25, first=1,tors=0;
 	
 	f = fopen("mangalist.xml", "r"); //Input
 	r = fopen("list_read.txt", "w");  //Output Reading
@@ -21,7 +20,7 @@ int main(){
 	w = fopen("list_wait.txt", "w");  //Output Waiting aka PlantoRead
 	h = fopen("list_hold.txt", "w");  //Output On Hold
 	d = fopen("list_drop.txt", "w");  //Output Dropped
-	 
+	
 	if(f == NULL){
 		printf("ERRO trying to open Input\n");
 		fclose(f);
@@ -38,86 +37,68 @@ int main(){
 	if(d == NULL){ printf("ERRO trying to create DOutput\n");
 		fclose(d);}
 	
-	pass=0; temp=0;
+		
 	while(fgets(l, 500, f )){ 
-		for(i=0;i<strlen(l);i++){
-			if(l[i] == 't' && !pass){
-				fg=1;
-				for(j=i, k=0; j<i+5 && k<5; j++, k++){
-					if(l[j] != t[k]){fg=0;}
-				}
-				if(fg && k==5 /*&& l[j-11] == '<' */){
-					j+=10;
-					printf("l[j] = %c\n",l[j]);
-					while(l[j] != ']'){
-						mgname[j] = l[j];
-						//printf("%s %c\n", mgname);
-						j++;	
-					}
-					ext=j;
-					mgname[j]='\n';
-					pass=1;
-				}
-				
-			}/*
-			if(l[i] == 's' && pass){
-				fg=1;
-				for(j=i, k=0; j<i+6 && k<6; j++, k++){
-					if(l[j] != s[k]){fg=0;}
-				}
-				if(fg && k==6 && l[j-11] == '<' ){
-					temp=l[j+2];
-					//printf("AQUI2\n");
-					//printf("%s %c\n",mgname, temp);
-				}
-				k=0;
-				
-				//printf("%s %c\n",mgname, temp);
-				
-				switch(temp){
-					case 'R':
-						while(k < ext){
-						fprintf(r,"%c",mgname[k]);
-						k++;	
-					}fprintf(r,"\n");
+		k++;
+		for(i=0;i<strlen(l) && first;i++){//first title to set the base
+			if(first && l[i] == 't'){
+				if(l[i+1] == 'i' && l[i+2]=='t'){
+					first=0;
 					break;
-					
-					case 'C':
-						while(k < ext){
-						fprintf(r,"%c",mgname[k]);
-						k++;	
-					}fprintf(r,"\n");
-					break;
-					
-					case 'P':
-						while(k < ext){
-						fprintf(r,"%c",mgname[k]);
-						k++;	
-					}fprintf(r,"\n");
-					break;
-					
-					case 'O':
-						while(k < ext){
-						fprintf(r,"%c",mgname[k]);
-						k++;	
-					}fprintf(r,"\n");
-					break;
-					
-					case 'D':
-						while(k < ext){
-						fprintf(r,"%c",mgname[k]);
-						k++;	
-					}fprintf(r,"\n");
-					break;
-						
 				}
-				pass=0;
-			}*/
+			}	
 		}
+		if(!first && kk == k){
+			if(!tors){//get title
+				kk+=12;//go to status
+				for(j=27;j<strlen(l);j++){
+					if(l[j]!=']'){
+						mgname[j-27]=l[j];
+					}
+					else break;
+				}
+				printf("%s \n",mgname);
+				tors=1;
+			}
+			else if(tors) {//get status
+				printf("%c%c%c%c%c ",l[16],l[17],l[18],l[19],l[20],l[21]);
+				kk+=14;//go to title
+				tors=0;
+				//save status file
+				if(l[16]=='R'){
+					fprintf(r,"%s",mgname);
+					fprintf(r,"\n");
+				}
+				else if(l[16]=='C'){
+					fprintf(c,"%s",mgname);
+					fprintf(c,"\n");
+				}
+				else if(l[16]=='P'){
+					fprintf(w,"%s",mgname);
+					fprintf(w,"\n");
+				}
+				else if(l[16]=='H'){
+					fprintf(h,"%s",mgname);
+					fprintf(h,"\n");
+				}
+				else if(l[16]=='D'){
+					fprintf(d,"%s",mgname);
+					fprintf(d,"\n");
+				}
+				
+				for(j=0;j<100;j++) mgname[j] = 0;
+			}
+		}
+		//printf("\n");
 	}
+	
 	
 	
 	fclose(r);
 	fclose(f);
+	fclose(w);
+	fclose(h);
+	fclose(d);
+	fclose(c);
 	return 0;
 }
