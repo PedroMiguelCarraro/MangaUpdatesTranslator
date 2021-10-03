@@ -42,7 +42,8 @@ The complex creates a file for each status,
  
 -->
  
- ![mal](.assets/malexport.png)
+ <img src="readmefiles/malexport.png">
+ 
  ![mal](.assets/malselect.png)
 
 
