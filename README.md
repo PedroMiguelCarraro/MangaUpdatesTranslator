@@ -4,11 +4,11 @@ This program is written in c and the propose is to translate the .xml file expor
 
 The simple version create one big file with all names, no helpfull
 The complex creates a file for each status,
--read, Reading
--comp, Completed
--hold, On-Hold
--drop, dropped
--wait, plan to read
+ - read, Reading
+ - comp, Completed
+ - hold, On-Hold
+ - drop, dropped
+ - wait, plan to read
 
 
 # How to Use
